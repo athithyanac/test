@@ -12,6 +12,12 @@ pipeline {
                 sh 'git --version'
             }
         }
+	stage('Docker build') {
+            steps {
+                sh 'docker build -t athithyanac/testapp .'
+            }
+        }
+	
     }
 }
 
