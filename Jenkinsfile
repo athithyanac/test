@@ -43,7 +43,9 @@ pipeline {
             }
         }
         stage('Docker-Deploy') {
-            sh "docker run -itd ${imgName}:${env.BUILD_NUMBER} ls -l"
+            steps {
+                sh "docker run -itd ${imgName}:${env.BUILD_NUMBER} ls -l"
+            }            
         }
 	
     }
