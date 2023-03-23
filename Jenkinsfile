@@ -7,16 +7,21 @@ pipeline {
     }
 
     stages {
-        stage('Docker Verify') {
-            steps {
-                sh 'docker --version'
-            }
-        }
-        stage('Git Verify') {
-            steps {
+        stage('Precheck') {
+            parallel {
+                stage('Docker Verify') {
+                steps {
+                    sh 'docker --version'
+                    }
+                }
+                stage('Git Verify') {
+                steps {
                 sh 'git --version'
+                    }
+                }
             }
         }
+ 
 	    stage('Docker build') {
             steps {
                 sh "docker build -t ${imgName}:${env.BUILD_NUMBER} -t ${imgName}:latest ."
