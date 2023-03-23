@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    optons{timestamps()}
+    options{timestamps()}
 
     environment {
         imgName = "athithyanac/testapp"
