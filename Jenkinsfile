@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         imgName = "athithyanac/testapp"
+        dockerTag = "v1"
     }
 
     stages {
@@ -18,7 +19,7 @@ pipeline {
         }
 	    stage('Docker build') {
             steps {
-                sh "docker build -t ${imgName}:v1 -t ${imgName}:latest ."
+                sh "docker build -t ${imgName}:${dockerTag} -t ${imgName}:latest ."
             }
         }
         stage('Docker Image Verify') {
