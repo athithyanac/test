@@ -30,7 +30,7 @@ pipeline {
 	    stage('Docker build') {
             when {
             expression {     
-                return env.GIT_BRANCH == "origin/test"   
+                return env.GIT_BRANCH == "origin/main"   
                        }
             }
             steps {
