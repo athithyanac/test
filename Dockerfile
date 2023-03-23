@@ -1,2 +1,2 @@
-From httpd
+From alpine
 LABEL name="devops"
