@@ -42,6 +42,11 @@ pipeline {
                 sh 'docker image ls'
             }
         }
+        stage('Clean up') {
+            steps {
+                sh 'docker rm -f $(docker ps -aq) 2> /dev/null || true'
+            }            
+        }
         stage('Docker-Deploy') {
             steps {
                 sh "docker run ${imgName}:${env.BUILD_NUMBER} ls -l"
