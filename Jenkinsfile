@@ -19,7 +19,7 @@ pipeline {
         }
 	    stage('Docker build') {
             steps {
-                sh "docker build -t ${imgName}:${dockerTag} -t ${imgName}:latest ."
+                sh "docker build -t ${imgName}:${env.BUILD_NUMBER} -t ${imgName}:latest ."
             }
         }
         stage('Docker Image Verify') {
