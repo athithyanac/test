@@ -48,6 +48,10 @@ pipeline {
             }            
         }
         stage('Docker-Deploy') {
+            input
+            {
+                message "Do you want to proceed for deployment ?"
+            }
             steps {
                 sh "docker run ${imgName}:${env.BUILD_NUMBER} ls -l"
             }            
