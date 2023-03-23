@@ -18,7 +18,7 @@ pipeline {
         }
 	    stage('Docker build') {
             steps {
-                sh "docker build -t ${imgName}:v1 -t ${imgName}:latest .'
+                sh "docker build -t ${imgName}:v1 -t ${imgName}:latest ."
             }
         }
         stage('Docker Image Verify') {
