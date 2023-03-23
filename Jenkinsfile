@@ -61,7 +61,11 @@ pipeline {
                 sh 'docker image prune -af'  
             }
         }
-	
+    }
+    post {
+        always {
+            sh 'docker images'
+        }
     }
 }
 
