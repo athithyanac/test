@@ -28,6 +28,11 @@ pipeline {
         }
  
 	    stage('Docker build') {
+            when {
+            expression {     
+                return env.GIT_BRANCH == "origin/test"   
+                       }
+            }
             steps {
                 sh "docker build -t ${imgName}:${env.BUILD_NUMBER} -t ${imgName}:latest ."
             }
@@ -36,6 +41,9 @@ pipeline {
             steps {
                 sh 'docker image ls'
             }
+        }
+        stage('Docker-Deploy') {
+            sh "docker run -itd ${imgName}:${env.BUILD_NUMBER} ls -l"
         }
 	
     }
