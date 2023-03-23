@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Clean up') {
             steps {
-                sh 'docker rm -f $(docker ps -aq) 2> /dev/null'
+                sh 'docker rm -f $(docker ps -aq) 2> /dev/null || true'
             }            
         }
         stage('Docker-Deploy') {
