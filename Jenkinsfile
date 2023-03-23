@@ -42,7 +42,7 @@ pipeline {
                 sh 'docker image ls'
             }
         }
-        stage('Clean up') {
+        stage('Docker Clean up') {
             steps {
                 sh 'docker rm -f $(docker ps -aq) 2> /dev/null || true'
             }            
@@ -55,6 +55,11 @@ pipeline {
             steps {
                 sh "docker run ${imgName}:${env.BUILD_NUMBER} ls -l"
             }            
+        }
+        stage('Docker-Images-CleanUp') {
+            steps {        
+                sh 'docker image prune -af'  
+            }
         }
 	
     }
