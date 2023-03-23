@@ -1,6 +1,8 @@
 pipeline {
     agent any
 
+    optons{timestamps()}
+
     environment {
         imgName = "athithyanac/testapp"
         dockerTag = "v1"
