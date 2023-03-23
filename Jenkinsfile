@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-    options{timestamps()}
+    options{
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr:'1'))
+    }
 
     environment {
         imgName = "athithyanac/testapp"
